@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgresql
+  labels:
+    app: postgre
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: postgre
+  template:
+    metadata:
+      labels:
+        app: postgre
+    spec:
+      containers:
+      - name: postgre
+        image: postgres:11.1-alpine
+        ports:
+        - containerPort: 5432
+        resources:
+          limits:
+            memory: "2Gi"
+            cpu: "100m"

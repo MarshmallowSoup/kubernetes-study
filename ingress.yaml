@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress4all
+  labels:
+    name: ingress4all
+spec:
+  rules:
+  - http:
+      paths:
+      - path: "/rabbitmq"
+        pathType: Prefix
+        backend:
+          service:
+            name: rabbitmq-service
+            port: 
+              number: 80
+      - path: "/mongodb"
+        pathType: Prefix
+        backend:
+          service:
+            name: mongo-service
+            port: 
+              number: 80
+      - path: "/eventstore"
+        pathType: Prefix
+        backend:
+          service:
+            name: eventstore-service
+            port: 
+              number: 80
+      - path: "/postgre"
+        pathType: Prefix
+        backend:
+          service:
+            name: postgre-service
+            port: 
+              number: 80
